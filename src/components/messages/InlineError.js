@@ -8,6 +8,6 @@ const InlineError = ({ text }) =>
 
 InlineError.propTypes = {
     text: PropTypes.string.isRequired
-}
+};
 
 export default InlineError;

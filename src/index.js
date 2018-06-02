@@ -9,6 +9,7 @@ import  thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './rootReducer';
+import {userLoggedIn} from "./actions/auth";
 
 
 const store = createStore(
@@ -16,6 +17,10 @@ const store = createStore(
     composeWithDevTools(applyMiddleware(thunk))
 );
 
+if(localStorage.bookerJWT){
+    const user = { token: localStorage.bookerJWT };
+    store.dispatch(userLoggedIn(user));
+}
 
 ReactDOM.render(
     <BrowserRouter>
